@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
 const categories = [
@@ -8,7 +8,18 @@ const categories = [
   },
   {
     title: "Nyimbo za Noeli",
-    songs: ["Usiku Mtakatifu", "Noeli Njema"],
+    songs: [
+      "Yesu Kristu Amezaliwa",
+      "Ahadi ya Mungu Imetimia",
+      "Gloria, Sifa Kwa Mungu",
+      "Agano Lake Bwana Sasa Latimia",
+      "Njooni Wakristu",
+      "Kimya Bara na Bahari",
+      "Twende Wote Betlehemu",
+      "Amezaliwa Bwana",
+      "Akazaliwa Mtoto Mungu",
+      "Mtoto Yesu Mpendelevu",
+    ],
   },
   {
     title: "Nyimbo za Kwaresma",
@@ -43,9 +54,13 @@ export default function CategoryScreen() {
       <Text style={styles.title}>{category.title}</Text>
 
       {category.songs.map((song, index) => (
-        <Text key={index} style={styles.song}>
+        <Link
+          key={index}
+          href={`/song/${categoryIndex}-${index}`}
+          style={styles.song}
+        >
           {song}
-        </Text>
+        </Link>
       ))}
     </View>
   );
@@ -69,5 +84,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     backgroundColor: "#f2e6d8",
     borderRadius: 10,
+    color: "#000",
   },
 });
